@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ninja Gold</title>
+  </head>
+  <body>
+<h1>Ninja Gold</h1>
+<h2>Your Gold: {{request.session.gold}}</h2>
+<h2>Work on Farm</h2>
+<h4>10 to 20 Gold</h4>
+<form class="Farm_form" action="/calculation" method="post">
+  {% csrf_token %}
+  <input type='hidden' name="action" value="farm">
+  <input type="submit" name="" value="Find Gold">
+</form>
+<h2>Investigate Cave</h2>
+<h4>5 to 10 Gold</h4>
+<form class="Cave_form" action="/calculation" method="post">
+  {% csrf_token %}
+  <input type="hidden" name="action" value="cave">
+  <input type="submit" value="Find Gold">
+</form>
+<h2>Search House for Change</h2>
+<h4>0 to 5 Gold</h4>
+<form class="House_form" action="/calculation" method="post">
+  {% csrf_token %}
+  <input type="hidden" name="action" value="house">
+  <input type="submit" value="Find Gold">
+</form>
+<h2>Gamble Your Savings at the Casino</h2>
+<h4>-50 to 50 Gold</h4>
+<form class="Casino_form" action="/calculation" method="post">
+  {% csrf_token %}
+  <input type="hidden" name="action" value="casino">
+  <input type="submit" value="Find Gold">
+</form>
+
+<div class="log_box">
+  {% for i in request.session.log %}
+    <p>{{i}}</p>
+  {%endfor%}
+  <!-- {{request.session.log}} -->
+
+</div>
+<form class="reset" action="/reset">
+<input type="submit" name="" value="Reset Game">
+</form>
+  </body>
+</html>

@@ -1,8 +1,8 @@
 from django.conf.urls import url, include
-#from django.contrib import admin
 from . import views
 urlpatterns = [
     url(r'^$',views.index),
-    url(r'^calculation$', views.calculation),
-    url(r'^reset$', views.reset)
+    url(r'^success$', views.success),
+    url(r'^create$', views.create),
+    url(r'^login$', views.login)
 ]
